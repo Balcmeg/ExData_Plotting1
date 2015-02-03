@@ -9,7 +9,7 @@ par(mfrow = c(2, 2))
 ## Plot graph in 1,1
 plot(powerdata$DateTime,powerdata$Global_active_power,type="l",xlab = "",ylab = "Global Active Power (kilowatts)")
 ## Plot graph in 1,2
-plot(powerdata$DateTime,powerdata$Voltage,type="l",xlab = "datetime",ylab = "Global Active Power (kilowatts)")
+plot(powerdata$DateTime,powerdata$Global_active_power,type="l",xlab = "",ylab = "Global Active Power (kilowatts)")
 ## Plot graph in 2,1
 plot(powerdata$DateTime,powerdata$Sub_metering_1,type="l",xlab = "",ylab = "Energy sub metering",col="black")
 lines(powerdata$DateTime, powerdata$Sub_metering_2, col = "red")

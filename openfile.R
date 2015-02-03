@@ -1,4 +1,4 @@
-## Placed the script for opening and reading the file in a separate function to reduce the clutter in the otehr scripts.
+## Placed the script for opening and reading the file in a separate function to reduce the clutter in the other scripts.
 openfile<-function() {
       ##Clean Environments
       rm(list = ls())
