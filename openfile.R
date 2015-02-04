@@ -13,17 +13,20 @@ openfile<-function() {
             unzip("./data/powerdata.zip",exdir="./data")
       }      
       ## Load and  testdata
-      powerdata<-read.csv("./data/household_power_consumption.txt", sep=";",header=TRUE, stringsAsFactors=FALSE)
-      
+      powerdata_all<-read.csv("./data/household_power_consumption.txt", sep=";",header=TRUE, stringsAsFactors=FALSE,na.strings = "?")
+      powerdata<-powerdata_all
       ## convert variables ot Numeric
       for (i in 3:9) {
             powerdata[,i]<-as.numeric(powerdata[,i])  
       }
       ## Convert to date format
       powerdata$Date<-as.Date(powerdata$Date,format="%d/%m/%Y")
+      powerdata$Wday<-weekdays(powerdata$Date)
       ## Subset data to keep only the dates we want to examine
       powerdata <- subset(powerdata,(Date=="2007-2-01"|Date=="2007-2-02"))
       ## Convert to time format
-      powerdata$Time<-strptime(powerdata$Time,format="%H:%M:%S")
-      outdata<-powerdata
+      ## powerdata$Time<-strptime(powerdata$Time,format="%H:%M:%S")
+      powerdata$DateTime<-as.POSIXct(paste(powerdata$Date, powerdata$Time))
+      output<-powerdata
+      ## powerdata$DateTime<- as.POSIXct(datetime)
 }
